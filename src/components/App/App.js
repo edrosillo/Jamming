@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import SearchResults from '../SearchResults/SearchResult';
+import Playlist from '../Playlist/Playlist';
 
 class App extends Component {
   constructor(props){
@@ -28,9 +29,39 @@ class App extends Component {
           album: 'The Fragile',
           id: '2'
         }
+      ],
+      playlistName: 'New PLaylist',
+      playlistTracks: [
+        {
+          name: '',
+          artist: '',
+          album: '',
+          id: ''
+        },
 
+        {
+          name: '',
+          artist: '',
+          album: '',
+          id: ''
+        },
+
+        {
+          name: '',
+          artist: '',
+          album: '',
+          id: ''
+        }
       ]
     }
+    this.addTrack = this.addTrack.bind(this);
+  }
+
+  addTrack(track){
+    if (this.state.playlistTracks.find(savedTrack =>
+     savedTrack.id === track.id)) {
+       return;
+     }
   }
 
   render() {
@@ -41,7 +72,7 @@ class App extends Component {
           <!-- Add a SearchBar component -->
            <div className="App-playlist">
             <SearchResults searchResults={this.state.searchResults}/>
-            <!-- Add a Playlist component -->
+            <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} />
           </div>
         </div>
       </div>

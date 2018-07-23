@@ -6,7 +6,7 @@ class Track extends React.Component {
         if(isRemoval === true){
             return <a>-</a>;
         } else {
-            return <a>+</a>;
+            return <a onClick={this.addTrack}>+</a>;
         }
     }
     render(){
