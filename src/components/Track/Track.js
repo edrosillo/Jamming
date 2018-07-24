@@ -2,6 +2,16 @@ import React from 'react';
 import './Track.css';
 
 class Track extends React.Component {
+    constructor(props){
+        super(props);
+
+        this.removeTrack = this.removeTrack.bind(this);
+    }
+
+    removeTrack() {
+        this.props.onRemove(this.props.track);
+    }
+
     renderAction (){
         if(isRemoval === true){
             return <a>-</a>;
