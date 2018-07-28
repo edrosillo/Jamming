@@ -14,10 +14,16 @@ class Tracklist extends React.Component{
     }
 
     render(){
+        return(
         <div className="TrackList">
-            {this.props.tracks.map(track =>
-                <Track track={track} onAdd={this.props.onAdd} onRemove={this.props.onRemove} isRemoval={true} /> )}
+            {this.props.track.map(track =>
+                {return <Track track={track} 
+                onAdd={this.props.onAdd} 
+                onRemove={this.props.onRemove} 
+                isRemoval={true} />} )
+            }
         </div>
+        );
     }
 }
 
