@@ -33,28 +33,7 @@ class App extends Component {
         }
       ],
       playlistName: 'New PLaylist',
-      playlistTracks: [
-        {
-          name: '',
-          artist: '',
-          album: '',
-          id: ''
-        },
-
-        {
-          name: '',
-          artist: '',
-          album: '',
-          id: ''
-        },
-
-        {
-          name: '',
-          artist: '',
-          album: '',
-          id: ''
-        }
-      ]
+      playlistTracks: []
     }
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
@@ -63,17 +42,16 @@ class App extends Component {
     this.search = this.search.bind(this);
   }
 
-  addTrack(track){
-    if (this.state.playlistTracks.find(savedTrack =>
-     savedTrack.id === track.id)) {
-       return;
-     }
+  addTrack(track) {
+    let tracks = this.state.playlistTracks;
+    tracks.push(track);
+    this.setState({ playlistTracks: tracks });
   }
 
-  removeTrack(track){
-    this.setState({
-      playlistTracks: this.state.playlistTracks.filter(playlistTrack => playlistTrack.id !== track.id)
-    });
+  removeTrack(track) {
+    let tracks = this.state.playlistTracks;
+    tracks = tracks.filter(current => current.id !== track.id);
+    this.setState({ playlistTracks: tracks });
   }
 
   updatePlaylistName(name){
@@ -87,8 +65,8 @@ class App extends Component {
         {
           playlistName: 'New Playlist',
           playlistTracks: []
-        })
-    })
+        });
+    });
   }
 
   search(searchTerm){
@@ -106,7 +84,7 @@ class App extends Component {
         <div class="App">
           <SearchBar  onSearch={this.search} />
            <div className="App-playlist">
-            <SearchResults searchResults={this.state.searchResults}/>
+            <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack} />
             <Playlist 
             playlistName={this.state.playlistName} 
             playlistTracks={this.state.playlistTracks} 
