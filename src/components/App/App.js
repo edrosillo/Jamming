@@ -58,7 +58,7 @@ class App extends Component {
   }
 
   savePlaylist(){
-    let trackURIs = this.state.playlistTracks.map(track => track.uri);
+    const trackURIs = this.state.playlistTracks.map(track => track.uri);
     Spotify.savePlaylist(this.state.playlistName, trackURIs).then(() => {
       this.setState(
         {
@@ -83,11 +83,11 @@ class App extends Component {
         <div class="App">
           <SearchBar  onSearch={this.search} />
            <div className="App-playlist">
-            <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack} />
+            <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack} onRemove={this.removeTrack} />
             <Playlist 
             playlistName={this.state.playlistName} 
             playlistTracks={this.state.playlistTracks}
-            onAdd={this.addTrack} 
+            onAdd={this.addTrack}
             onRemove={this.removeTrack}
             onNameChange={this.updatePlaylistName}
             onSave={this.savePlaylist} />
