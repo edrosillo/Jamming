@@ -1,5 +1,5 @@
 const clientId = 'b26b01da0b514b60bb9f725f4c79b561';
-const redirectURI = 'http://localhost:3000/'
+const redirectURI = 'https://edrosillo-jamming.surge.sh'
 
 let accessToken
 

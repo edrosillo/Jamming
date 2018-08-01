@@ -24,10 +24,15 @@ class SearchBar extends React.Component {
         }
     }
 
+    updateInput(term, query) {
+        this.setState({ [term]: query });
+        localStorage.setItem(term, query);
+    }
+
     render() {
         return(
         <div className="SearchBar">
-        <input placeholder="Enter A Song, Album, or Artist" onChange={this.handleTermChange}onKeyUp={this.handleKeyPress.bind(this)} />
+        <input placeholder="Enter A Song, Album, or Artist" onChange={this.handleTermChange} onKeyUp={this.handleKeyPress.bind(this)} />
             <a onClick={this.search}>SEARCH</a>
         </div>
         );

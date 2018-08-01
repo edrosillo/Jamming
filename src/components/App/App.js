@@ -29,7 +29,7 @@ class App extends Component {
           name: 'The Wretched',
           artist: 'Nine Inch Nails',
           album: 'The Fragile',
-          id: '2'
+          id: '3'
         }
       ],
       playlistName: 'New PLaylist',
@@ -80,7 +80,7 @@ class App extends Component {
     return (
       <div>
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
-        <div class="App">
+        <div className="App">
           <SearchBar  onSearch={this.search} />
            <div className="App-playlist">
             <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack} onRemove={this.removeTrack} />
